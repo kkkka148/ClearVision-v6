@@ -24,6 +24,15 @@
   }
 }
 
+%friendsDiscoverHint {
+  background: hsla(0, 0%, 0%, 0.2);
+  border: 2px solid $main-color;
+  &:hover {
+    background: hsla(0, 0%, 0%, 0.4);
+    border: 2px solid $hover-color;
+  }
+}
+
 // ACTION BUTTON
 %friendActionButton {
   background-color: hsla(0, 0%, 0%, 0.6);
@@ -78,7 +87,7 @@
   box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.09);
   border: none;
   &:focus-within {
-    box-shadow: 0 0 2px 2px var(--main-color);
+    box-shadow: 0 0 2px 2px $main-color;
   }
   %input {
     background-color: transparent;
@@ -125,14 +134,14 @@
   %activeNowCardInset {
     background-color: hsla(0, 0%, 0%, 0.4);
   }
-  .partyMemberOverflow-3G1oZz {
+  %activeNowPartyOverflow {
     background-color: var(--background-overlay);
   }
 }
 %activeNowCardSection {
   background-color: transparent;
 }
-%themeDark .applicationStreamingPreviewWrapper-7j27t8 {
+%themeDark %activeNowPreviewWrapper {
   background-color: transparent;
 }
 
@@ -145,12 +154,13 @@
 }
 
 // DM USER PROFILE
-.userProfileOuterUnthemed-2b2rsv {
-	background-color: hsla(0, 0%, 0%, .4);
-}
-.userProfileOuterUnthemed-2b2rsv .userPanelInnerThemed-2xZFjl {
-	background: transparent;
-}
-.overlayBackground-1KgwVi {
-	background-color: hsla(0, 0%, 0%, .4);
+%userProfileOuterUnthemed {
+  background-color: hsla(0, 0%, 0%, 0.4);
+  %userProfileDMInnerThemed {
+    background: transparent;
+  }
+  %userModalDMBadgeList,
+  %userProfileDMOverlayBackground {
+    background: hsla(0, 0%, 0%, 0.4);
+  }
 }

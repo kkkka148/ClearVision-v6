@@ -23,21 +23,11 @@
   }
 
   // CONTENT
-  %messageSystemContainer {
-    color: hsla(0, 0%, 100%, 0.5);
-  }
-  %markup {
+  %messageContent {
     color: var(--text-normal);
   }
-
-  // MENTIONED
-  %mentioned {
-    background: hsla(0, 0%, 100%, 0.1);
-    &:after {
-      background: hsla(0, 0%, 100%, 0.1);
-      border-left: 4px solid $main-color;
-      border-radius: 2px 0 0 2px;
-    }
+  %messageSystemContainer {
+    color: hsla(0, 0%, 100%, 0.5);
   }
 
   // BLOCKQUOTE
@@ -47,28 +37,32 @@
       border-radius: 0;
     }
   }
-  // MESSAGE JUMP
-  >div[style^='border-radius: 2px;'] {
-    &[style$='0);'] {
-      animation: none;
-    }
-    border-radius: 3px !important;
-    animation: cv-message-jump 2s ease-in-out;
-  }
 }
+
 // GIFS/EMBEDS
 %messageInlineMediaEmbed {
   max-width: max-content;
 }
+
+// SPOILER
+%messageSpoiler {
+  background-color: hsla(0, 0%, 0%, 0.8);
+}
+
 // LINKS
 %markup a,
 %anchor {
   color: var(--url-color);
 }
+%messageSystemContent {
+  %anchorAction {
+    color: var(--url-color);
+  }
+}
 
 // INVALID GIFT
 %themeDark {
-  .tile-2mmK5T {
+  %messageInvalidGift {
     background-color: hsla(0, 0%, 0%, 0.4);
     &:hover {
       background-color: hsla(0, 0%, 0%, 0.4);
@@ -91,12 +85,6 @@
     }
     %messageRepliedTextPlaceholder {
       color: $main-color;
-    }
-  }
-  %messageRepliedTextContentIcon {
-    opacity: 0.7;
-    %messageRepliedTextPreview:hover+& {
-      opacity: 1;
     }
   }
   &%messageRepliedExecutedCommand {
@@ -126,10 +114,10 @@
   }
 }
 %threadJumpButton {
-  background-color: var(--main-color);
+  background-color: $main-color;
   color: #fff;
   &:hover {
-    background-color: var(--hover-color);
+    background-color: $hover-color;
     color: #fff;
   }
 }
@@ -150,8 +138,8 @@
 // EDITING
 %themeDark %operations {
   color: hsla(0, 0%, 100%, 0.5);
-  >a {
-    color: var(--main-color);
+  > a {
+    color: $main-color;
   }
 }
 
@@ -161,7 +149,7 @@
     background-color: hsla(0, 0%, 100%, 0.08);
   }
   &:before {
-    background-color: var(--main-color);
+    background-color: $main-color;
   }
 }
 
@@ -176,14 +164,23 @@
 }
 
 // PUBLISH TO FOLLOWERS
-.bumpBox-1Pp4td {
-	background: hsla(0, 0%, 0%, .4);
+%messagePublishBumpBox {
+  background: hsla(0, 0%, 0%, 0.4);
 }
-.icon-3N9zCW,
-.tagline-7EjHTm {
-	color: #fff;
+%messagePublishIcon,
+%messagePublishTagline {
+  color: #fff;
 }
-.closeIcon-2Qp1gl,
-.hidePermanently-3f2ZH0 {
-	color: hsla(0, 0%, 100%, .4) !important;
+%messagePublishCloseIcon,
+%messagePublishPermanentHide {
+  color: hsla(0, 0%, 100%, 0.4) !important;
+}
+
+// AUTOMOD MESSAGE
+%messageAutomodCard,
+%messageAutomodFooterContainer {
+  background-color: hsla(0, 0%, 0%, 0.4);
+}
+%messageAutomodFooterIcon path {
+  fill: $main-color;
 }

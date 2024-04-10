@@ -11,7 +11,7 @@
 
 // ACCOUNT & CONNECTION PANELS
 %accountPanel {
-  >%flex {
+  > %flex {
     background: rgba(0, 0, 0, 0.3);
     border-radius: 15px;
     > :nth-child(n + 2) {
@@ -31,26 +31,29 @@
 }
 
 // BUTTONS
-%panelButton {
+button%panelButton {
   width: 32px;
   height: 32px;
   opacity: 1;
-  >%buttonContents>svg {
+  > %buttonContents > svg {
     @include bg($rep: no-repeat, $pos: center, $size: 18px);
     color: #fff;
     opacity: 0.5;
     transition: all 0.1s ease-in-out;
+    > path[fill*='var(--interactive-normal)'] {
+      fill: #fff;
+    }
   }
   &:hover {
     &%panelButtonEnabled {
       background: transparent;
     }
-    >%buttonContents>svg {
+    > %buttonContents > svg {
       opacity: 0.7;
     }
   }
   &%panelButtonDisabled {
-    >%buttonContents>svg {
+    > %buttonContents > svg {
       opacity: 0.1;
     }
   }
@@ -60,10 +63,10 @@
 }
 %panelActionButton {
   &%panelActionButtonColor {
-    padding: 2px 14px;
+    padding: 0;
     &%panelActionButtonActive {
       background-color: #fff;
-      color: var(--main-color);
+      color: $main-color;
       &:hover {
         background: hsla(0, 0%, 100%, 0.95);
         color: $hover-color;
@@ -76,45 +79,11 @@
 %themeDark %accountPanel {
   position: relative;
   background: transparent;
-  margin-bottom: 10px;
-  &:before,
-  &:after {
-    bottom: -8px;
-    position: absolute;
-    color: hsla(0, 0%, 100%, 0.3);
-    font-size: 11px;
-    font-weight: 700;
-    transition: all 0.5s ease-in-out;
-  }
-  &:before {
-    content: cv('const:text.account.main');
-    right: 50%;
-    text-align: right;
-    transform: translateX(50%);
-  }
-  &:after {
-    content: cv('const:text.account.version');
-    left: 50%;
-    text-align: left;
-    opacity: 0;
-    transform: translateX(50%) rotateX(90deg);
-  }
-  &:hover {
-    &:before {
-      margin-right: 1px;
-      transform: none;
-    }
-    &:after {
-      margin-left: 1px;
-      opacity: 1;
-      transform: none;
-    }
-  }
   // SOME POSITIONING
   %accountPanelTagButton,
   %accountPanelTagless {
     min-width: calc(100% - 100px);
-	  width: auto;
+    width: auto;
     &:hover {
       background-color: hsla(0, 0%, 0%, 0.3);
       color: #fff;
@@ -143,12 +112,9 @@
       transition: all 0.15s ease-in-out;
     }
     &:hover {
-      width: 40px !important;
-      height: 40px !important;
       opacity: 1;
       &:after {
         font-size: 10px;
-        line-height: 40px;
         opacity: 1;
       }
       foreignObject {
@@ -167,7 +133,7 @@
 
 // CONNECTION PANEL
 %connectionPanel {
-  >%flex {
+  > %flex {
     background: rgba(0, 0, 0, 0.3);
     border-radius: 5px;
     padding: 5px;
